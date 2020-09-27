@@ -1,0 +1,4 @@
+interface iWeapon
+{
+    void fire();
+}

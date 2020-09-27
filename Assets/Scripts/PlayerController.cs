@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float move_speed = 10.0f;
+    [SerializeField] private float moveSpeed = 10.0f;
+    [SerializeField] private GameObject[] weapons;
+
+    private GameObject rotationLayer;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        rotationLayer = transform.Find("RotationLayer").gameObject;
     }
 
     // Update is called once per frame
@@ -18,6 +21,6 @@ public class PlayerController : MonoBehaviour
         float hInput = Input.GetAxis("Horizontal");
         float vInput = Input.GetAxis("Vertical");
         Vector3 direction = new Vector3(hInput,0, vInput);
-        transform.Translate(direction * Time.deltaTime * move_speed);
+        transform.Translate(direction * Time.deltaTime * moveSpeed);
     }
 }
