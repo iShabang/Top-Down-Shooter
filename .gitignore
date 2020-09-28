@@ -5,4 +5,4 @@ Library/
 obj
 *.swp
 UserSettings/
-Assembly-CSharp.csproj
+*.csproj
