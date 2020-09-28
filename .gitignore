@@ -1,7 +1,8 @@
 *.vscode
 Temp
 Logs
-Library
+Library/
 obj
 *.swp
 UserSettings/
+Assembly-CSharp.csproj

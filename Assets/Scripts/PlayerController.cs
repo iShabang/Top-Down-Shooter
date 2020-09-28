@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 10.0f;
-    [SerializeField] private GameObject[] weapons;
+    [SerializeField] private GameObject[] weapons = null;
 
     private Camera mainCamera;
     private Transform aimer;
