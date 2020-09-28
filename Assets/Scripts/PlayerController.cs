@@ -15,9 +15,9 @@ public class PlayerController : MonoBehaviour
     {
         mainCamera = FindObjectOfType<Camera>();
         aimer = GameObject.Find("Aimer").transform;
-        Vector3 weaponPos = new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.45f);
+        Vector3 weaponPos = new Vector3(aimer.position.x, aimer.position.y, aimer.position.z + 2.0f);
         GameObject weapon = Instantiate(weapons[0], weaponPos, weapons[0].transform.rotation);
-        weapon.transform.SetParent(aimer.transform);
+        weapon.transform.SetParent(aimer,true);
         //weapon.transform.position = weaponPos;
 
     }
