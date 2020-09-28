@@ -6,3 +6,4 @@ obj
 *.swp
 UserSettings/
 *.csproj
+*.sln
