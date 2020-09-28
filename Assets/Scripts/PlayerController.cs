@@ -9,14 +9,24 @@ public class PlayerController : MonoBehaviour
 
     private Camera mainCamera;
     private Transform aimer;
+    private GameObject currentWeapon;
+    private iWeapon currWeaponInterface;
 
     // Start is called before the first frame update
     void Start()
     {
         mainCamera = FindObjectOfType<Camera>();
+
+        // Select weapon to use
+        // TODO: Create method for selecting the starting weapon
+        currentWeapon = weapons[0];
+        currWeaponInterface = currentWeapon.GetComponent<iWeapon>();
+
+        // Instantiate weapon and move to correct location
+        // TODO: Move to separate method
         aimer = GameObject.Find("Aimer").transform;
         Vector3 weaponPos = new Vector3(aimer.position.x, aimer.position.y, aimer.position.z + 2.0f);
-        GameObject weapon = Instantiate(weapons[0], weaponPos, weapons[0].transform.rotation);
+        GameObject weapon = Instantiate(currentWeapon, weaponPos, currentWeapon.transform.rotation);
         weapon.transform.SetParent(aimer,true);
 
     }
@@ -38,6 +48,12 @@ public class PlayerController : MonoBehaviour
         {
             Vector3 pointToLook = cameraRay.GetPoint(rayLength);
             aimer.transform.LookAt(new Vector3(pointToLook.x,aimer.transform.position.y,pointToLook.z));
+        }
+
+        // Shoot weapon with mouse
+        if (Input.GetMouseButtonDown(0))
+        {
+            currWeaponInterface.fire();
         }
     }
 }

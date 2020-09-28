@@ -18,5 +18,6 @@ public class Gun : MonoBehaviour, iWeapon
 
     public void fire()
     {
+        Debug.Log("Im a gun!!!");
     }
 }
