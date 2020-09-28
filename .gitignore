@@ -5,3 +5,4 @@ Library
 obj
 *.swp
 Assets/Plugins*
+ProjectSettings/Packages/
