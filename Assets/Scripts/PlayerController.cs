@@ -28,7 +28,9 @@ public class PlayerController : MonoBehaviour
         float hInput = Input.GetAxis("Horizontal");
         float vInput = Input.GetAxis("Vertical");
         Vector3 direction = new Vector3(hInput,0, vInput);
+        Vector3 cameraDirection = new Vector3(hInput,vInput,0);
         transform.Translate(direction * Time.deltaTime * moveSpeed);
+        mainCamera.transform.Translate(cameraDirection * Time.deltaTime * moveSpeed);
 
         // Mouse Aim
         Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
