@@ -1797,12 +1797,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4953700986826609752, guid: 63e8a61dff0f6e547b2b101c1551d77c,
-        type: 3}
-      propertyPath: weapons.Array.data[0]
-      value: 
-      objectReference: {fileID: 2070860075239718576, guid: 5babef35ca6995a498927a841265a9f6,
-        type: 3}
     - target: {fileID: 4953700986826609753, guid: 63e8a61dff0f6e547b2b101c1551d77c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1860,21 +1854,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4953700986826609754, guid: 63e8a61dff0f6e547b2b101c1551d77c,
         type: 3}
-      propertyPath: m_SelectedFaces.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4953700986826609754, guid: 63e8a61dff0f6e547b2b101c1551d77c,
-        type: 3}
-      propertyPath: m_SelectedEdges.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4953700986826609754, guid: 63e8a61dff0f6e547b2b101c1551d77c,
-        type: 3}
-      propertyPath: m_SelectedVertices.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4953700986826609754, guid: 63e8a61dff0f6e547b2b101c1551d77c,
-        type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1296534083}
@@ -1901,7 +1880,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1342
+  m_Name: pb_Mesh-1344
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
