@@ -19,15 +19,16 @@ public class PlayerController : MonoBehaviour
 
         // Select weapon to use
         // TODO: Create method for selecting the starting weapon
-        currentWeapon = weapons[0];
-        currWeaponInterface = currentWeapon.GetComponent<iWeapon>();
+        GameObject weaponPrefab = weapons[0];
 
         // Instantiate weapon and move to correct location
         // TODO: Move to separate method
         aimer = GameObject.Find("Aimer").transform;
         Vector3 weaponPos = new Vector3(aimer.position.x, aimer.position.y, aimer.position.z + 2.0f);
-        GameObject weapon = Instantiate(currentWeapon, weaponPos, currentWeapon.transform.rotation);
-        weapon.transform.SetParent(aimer,true);
+        currentWeapon = Instantiate(weaponPrefab, weaponPos, weaponPrefab.transform.rotation);
+        currentWeapon.transform.position = weaponPos;
+        currentWeapon.transform.SetParent(aimer,true);
+        currWeaponInterface = currentWeapon.GetComponent<iWeapon>();
 
     }
 
