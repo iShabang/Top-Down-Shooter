@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour, iWeapon
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] private GameObject bulletPrefab = null;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private float force;
 
     public void fire()
     {
+        GameObject bullet = Instantiate(bulletPrefab,firePoint.position,firePoint.rotation);
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        rb.AddForce(firePoint.forward * force, ForceMode.Impulse);
     }
 }

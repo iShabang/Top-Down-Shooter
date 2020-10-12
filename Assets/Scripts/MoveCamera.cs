@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveForward : MonoBehaviour
+public class MoveCamera : MonoBehaviour
 {
-    [SerializeField] private float speed = 10.0f;
+    [SerializeField] private Camera cam;
+    [SerializeField] private Transform player;
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+       cam.transform.position = new Vector3 (player.position.x, transform.position.y, player.position.z); 
     }
 }

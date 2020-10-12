@@ -6,31 +6,36 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 10.0f;
     [SerializeField] private GameObject[] weapons = null;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private Camera mainCamera;
 
-    private Camera mainCamera;
-    private Transform aimer;
+    private GameObject currentWeapon;
+    private iWeapon currWeaponInterface;
+    private Vector3 movement;
 
     // Start is called before the first frame update
     void Start()
     {
-        mainCamera = FindObjectOfType<Camera>();
-        aimer = GameObject.Find("Aimer").transform;
-        Vector3 weaponPos = new Vector3(aimer.position.x, aimer.position.y, aimer.position.z + 2.0f);
-        GameObject weapon = Instantiate(weapons[0], weaponPos, weapons[0].transform.rotation);
-        weapon.transform.SetParent(aimer,true);
-        //weapon.transform.position = weaponPos;
+        // Select weapon to use
+        // TODO: Create method for selecting the starting weapon
+        GameObject weaponPrefab = weapons[0];
+
+        // Instantiate weapon and move to correct location
+        // TODO: Move to separate method
+        Vector3 weaponPos = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2.0f);
+        currentWeapon = Instantiate(weaponPrefab, weaponPos, weaponPrefab.transform.rotation);
+        currentWeapon.transform.position = weaponPos;
+        currentWeapon.transform.SetParent(transform,true);
+        currWeaponInterface = currentWeapon.GetComponent<iWeapon>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        float hInput = Input.GetAxis("Horizontal");
-        float vInput = Input.GetAxis("Vertical");
-        Vector3 direction = new Vector3(hInput,0, vInput);
-        //Vector3 cameraDirection = new Vector3(hInput,vInput,0);
-        transform.Translate(direction * Time.deltaTime * moveSpeed);
-        //mainCamera.transform.Translate(cameraDirection * Time.deltaTime * moveSpeed);
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.z = Input.GetAxisRaw("Vertical");
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
 
         // Mouse Aim
         Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -40,7 +45,13 @@ public class PlayerController : MonoBehaviour
         if (groundPlane.Raycast(cameraRay, out rayLength))
         {
             Vector3 pointToLook = cameraRay.GetPoint(rayLength);
-            aimer.transform.LookAt(new Vector3(pointToLook.x,aimer.transform.position.y,pointToLook.z));
+            transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+        }
+
+        // Shoot weapon with mouse
+        if (Input.GetMouseButtonDown(0))
+        {
+            currWeaponInterface.fire();
         }
     }
 }
